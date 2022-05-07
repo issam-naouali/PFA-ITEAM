@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Liste des clients</title>
+ <link th:href="@{../../webjars/bootstrap/4.0.0/css/bootstrap.min.css}" rel="stylesheet" />
+ <script src="../../webjars/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <script src="../../webjars/jquery/3.0.0/js/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2>Book List</h2>
+    <table class = "table table-striped">
+        <thead>
+        <th scope="row">ID Book</th>
+        <th scope="row">Title</th>
+        <th scope="row">Edition</th>
+        </thead>
+        <tbody>
+        <tr th:each="b : ${Books}">
+            <td th:utext="${b.id}"></td>
+            <td th:utext="${b.title}"></td>
+            <td th:utext="${b.edition}"></td>
+            <td> <a class="btn btn-danger" th:href="@{/book/delete/{id}(id=${b.id})}" role="button"> - Delete</a> </td>
+            <td> <a class="btn btn-primary" th:href="@{/book/update/{id}(id=${b.id})}" role="button"> Update</a> </td>
+        </tr>
+        </tbody>
+    </table>
+    <a class="btn btn-primary" th:href="@{/book/add}" role="button"> + New Book</a>
+<!--    <a class="btn btn-Primary" th:href="@{/home}" role="button"> Home Screen</a>-->
+</div>
+</body>
+</html>
